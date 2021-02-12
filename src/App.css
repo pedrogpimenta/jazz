@@ -1,38 +1,270 @@
+body {
+  /* overflow: hidden; */
+}
+
+img {
+  max-width: 100%;
+}
+
+:root {
+  --c-border: black;
+  --c-text: black;
+}
+
+
+
+@font-face {
+  font-family: 'Kuchen Hollow';
+  src: url('./fonts/kuchenhollow.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Staatliches';
+  src: url('./fonts/staatliches.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Sunset Boulevard';
+  src: url('./fonts/sunset-boulevard.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
 .App {
-  text-align: center;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.music-list {
+  /* overflow: scroll; */
+  padding-bottom: 40.625vw;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.music-list__item {
   display: flex;
-  flex-direction: column;
+  margin: 4px 8px;
+  border: 4px solid var(--c-border);
+  min-height: 70px;
+  cursor: pointer;
+}
+
+.music-list__image {
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-shrink: 0;
+  position: relative;
+  max-width: 70px;
+  overflow: hidden;
+  border-right: 4px solid var(--c-border);
 }
 
-.App-link {
-  color: #61dafb;
+.music-list__image img {
+  position: relative;
+  width: calc(100% - 4px);
+  z-index: 2;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.music-list__image-bg {
+  position: absolute;
+  top: -15%;
+  left: -15%;
+  width: 130%;
+  height: 130%;
+  background-size: cover;
+  filter: blur(4px);
+  background-position: center;
+}
+
+.music-list__name {
+  padding: 8px 6px 0 6px;
+
+  color: var(--c-text);
+  font-family: 'Staatliches';
+  font-size: 18px;
+  line-height: 35px;
+}
+
+.music-list__name span {
+  font-family: 'Kuchen Hollow';
+  font-size: 44px;
+}
+
+
+/* controls */
+
+.controls {
+  position: fixed;
+  transform: translateX(-50%);
+  left: 50%;
+  bottom: 0;
+  width: 100%;
+  padding: 0 4px;
+  z-index: 10;
+}
+
+@media screen and (min-width: 460px) {
+  .controls {
+    width: 460px;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+.controls__music {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center ;
+  /* margin: 4px 8px; */
+  /* border: 4px solid var(--c-border); */
+  /* background: white; */
+  height: 40.625vw;
+}
+
+@media screen and (min-width: 460px) {
+  .controls__music {
+    height: 186.875px;
   }
+}
+
+.control__music--bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.controls__name__wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  width: 100%%;
+  text-align: center;
+  overflow: hidden;
+  z-index: 2;
+  padding-right: 70px;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+
+.controls__name {
+  padding: 8px 6px 0 6px;
+
+  white-space: nowrap;
+  color: var(--c-text);
+  font-family: 'Staatliches';
+  font-size: 12px;
+  line-height: 35px;
+}
+
+.controls__name span {
+  font-family: 'Kuchen Hollow';
+  font-size: 28px;
+}
+
+.controls__buttons {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex: 1;
+  z-index: 2;
+  padding-right: 70px;
+  padding-left: 10px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+@media screen and (min-width: 460px) {
+  .controls__buttons {
+    left: -38px;
+  }
+}
+
+.controls__buttons__playpause {
+  cursor: pointer;
+}
+
+.controls__volume--wrapper {
+  width: 100%;
+  z-index: 5;
+}
+
+.controls__volume {
+  position: absolute;
+  top: 0;
+  right: 10vw;
+}
+
+@media screen and (min-width: 460px) {
+  .controls__volume {
+    right: 50px;
+  }
+}
+
+.controls__volume .rangeslider {
+  background: white;
+  border: 4px solid black;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.controls__volume .rangeslider-horizontal {
+  height: 14px;
+}
+
+.controls__volume .rangeslider-vertical {
+  height: 28vw;
+}
+
+@media screen and (min-width: 500px) {
+  .controls__volume .rangeslider-vertical {
+    height: 140px;
+  }
+}
+
+.controls__volume .rangeslider-vertical .rangeslider__fill {
+  background: black;
+  box-shadow: none;
+  border-radius: 0;
+  margin: 2px;
+  width: 6px;
+  /* height: 8px; */
+}
+
+.controls__volume .rangeslider__handle {
+  background: black;
+  box-shadow: none;
+  border: none;
+  border-radius: 0;
+  height: 15px;
+}
+
+.controls__volume .rangeslider__handle:after {
+  border-radius: 0;
+  background: white;
+  box-shadow: none;
+  width: 15px;
+  height: 16px;
+  top: 7px;
+  left: 7px;
+}
+
+
+.video-holder {
+  position: absolute;
+  opacity: 0;
+  /* position: fixed;
+  top: -100%;
+  left: 0;
+  width: 100vw;
+  overflow: hidden; */
 }
