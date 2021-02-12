@@ -4,7 +4,7 @@ import ReactPlayer from 'react-player'
 import Slider from 'react-rangeslider'
 import 'react-rangeslider/lib/index.css'
 
-import { COLORS, CONTROLS_MUSIC_BGS } from './CONSTANTS'
+import { CONTROLS_MUSIC_BGS } from './CONSTANTS'
 
 class ControlsMusic extends React.Component {
   constructor(props) {
@@ -30,12 +30,6 @@ class ControlsMusic extends React.Component {
     return (
       <div
         className="controls__music"
-        // style={{
-        //   maskImage: `url(/assets/svg/controls-music-bg${this.state.backgroundNumber}.svg)`,
-        //   maskSize: '100vmin',
-        //   maskRepeat: 'no-repeat',
-        //   maskPosition: 'center',
-        // }}
       >
         {this.state.background}
         <div className="controls__name__wrapper">
@@ -90,14 +84,6 @@ class ControlsMusic extends React.Component {
               value={this.props.volume}
               onChange={this.props.handleVolumeChange}
             />
-            {/* <input
-              type="range"
-              min="0"
-              max="10"
-              style={{
-                backgroundColor: COLORS[Math.floor(Math.random() * COLORS.length)],
-              }}
-            /> */}
           </div>
         </div>
         <div className='video-holder'>

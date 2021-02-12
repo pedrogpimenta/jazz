@@ -1,5 +1,4 @@
 import React from 'react'
-import ReactPlayer from 'react-player'
 import ControlsMusic from './ControlsMusic'
 import './App.css'
 
@@ -61,22 +60,13 @@ class App extends React.Component {
         <div
           className="controls"
         >
-          {/* {typeof this.state.currentMusic.src !== 'undefined' && */}
-            <ControlsMusic
-              currentMusic={this.state.currentMusic}
-              playing={this.state.playing}
-              volume={this.state.volume}
-              handlePlaypause={this.handlePlaypause}
-              handleVolumeChange={this.handleVolumeChange}
-            />
-          {/* } */}
-          {/* <div className="controls__ui">
-            <div className="controls__menu">
-              M
-            </div>
-            <div className="controls__search">
-            </div>
-          </div> */}
+          <ControlsMusic
+            currentMusic={this.state.currentMusic}
+            playing={this.state.playing}
+            volume={this.state.volume}
+            handlePlaypause={this.handlePlaypause}
+            handleVolumeChange={this.handleVolumeChange}
+          />
         </div>
       </div>
     );
